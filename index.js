@@ -1,3 +1,20 @@
-new String(); // "" '', ``
-new Boolean(); // false, true
-new Number(); // 1, 2, 3, ...
+function Circle(radius) {
+  this.radius = radius;
+  this.draw = function () {
+    console.log("draw");
+  };
+}
+
+const Circle1 = new Function(
+  "radius",
+  `
+this.radius = radius;
+this.draw = function () {
+  console.log("draw");
+};
+`
+);
+
+const circle = new Circle1(10);
+
+const another = new Circle(1);
