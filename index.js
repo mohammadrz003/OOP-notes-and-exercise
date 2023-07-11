@@ -1,8 +1,12 @@
-let x = { value: 10 };
-
-function increase(obj) {
-  obj.value++;
+function Circle(radius) {
+  this.radius = radius;
+  this.draw = function () {
+    console.log("draw");
+  };
 }
 
-increase(x);
-console.log(x);
+const circle = new Circle(1);
+
+circle.location = { x: 1 };
+
+delete circle.radius;
