@@ -4,18 +4,27 @@ function Circle(radius) {
   // private property
   let defaultLocation = { x: 0, y: 0 };
 
-  // private method
-  let computeOptimumLocation = function (factor) {
-    console.log("compute location ran");
+  this.getDefaultLocation = function () {
+    return defaultLocation;
   };
 
   this.draw = function () {
-    computeOptimumLocation(0.1);
-    // defaultLocation;
-
     console.log("draw");
   };
+
+  Object.defineProperty(this, "defaultLocation", {
+    get: function () {
+      return defaultLocation;
+    },
+    set: function (value) {
+      if (!value.x || !value.y) {
+        throw new Error("Invalid location.");
+      }
+
+      defaultLocation = value;
+    },
+  });
 }
 
 const circle = new Circle(1);
-circle.draw();
+circle.defaultLocation = 5;
