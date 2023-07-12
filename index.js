@@ -1,15 +1,9 @@
-let person = { name: "Mohammad" };
+function Circle(radius) {
+  this.radius = radius;
 
-Object.defineProperty(person, "name", {
-  writable: false,
-});
+  this.draw = function () {
+    console.log("draw");
+  };
+}
 
-person.name = "Rezaei";
-
-console.log(person);
-
-// let objectBase = Object.getPrototypeOf(person);
-
-// let descriptor = Object.getOwnPropertyDescriptor(objectBase, "toString");
-
-// console.log(descriptor);
+const circle = new Circle(10);
