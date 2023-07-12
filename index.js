@@ -1,35 +1,23 @@
-// Intermediate function inheritence
-function extend(Child, Parent) {
-  Child.prototype = Object.create(Parent.prototype);
-  Child.prototype.constructor = Child;
+function mixin(target, ...sources) {
+  Object.assign(target, ...sources);
 }
 
-function Shape() {}
-
-Shape.prototype.duplicate = function () {
-  console.log("duplicate");
+const canEat = {
+  eat: function () {
+    this.hunger--;
+    console.log("eating");
+  },
 };
 
-function Circle() {}
-
-extend(Circle, Shape);
-
-Circle.prototype.duplicate = function () {
-  console.log("duplicate circle");
+const canWalk = {
+  walk: function () {
+    console.log("walking");
+  },
 };
 
-function Square() {}
+function Person() {}
 
-extend(Square, Shape);
+mixin(Person.prototype, canEat, canWalk);
 
-Square.prototype.duplicate = function () {
-  console.log("duplicate square");
-};
-
-let c = new Circle(1, "green");
-
-const shapes = [new Circle(), new Square()];
-
-for (let shape of shapes) {
-  shape.duplicate();
-}
+const person = new Person();
+console.log(person);
