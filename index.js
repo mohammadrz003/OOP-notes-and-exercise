@@ -1,8 +1,23 @@
-class Math2 {
-  // Static method
-  static plusNumbers(num1, num2) {
-    return num1 + num2;
+class Circle {
+  draw() {
+    console.log(this);
   }
 }
 
-console.log(Math2.plusNumbers(1, 2));
+const c = new Circle();
+const draw = c.draw;
+draw();
+
+// function Circle() {
+//   this.draw = function () {
+//     console.log(this);
+//   };
+// }
+
+// const c = new Circle();
+// // Method call
+// c.draw();
+
+// const draw = c.draw;
+// // Function call
+// draw();
