@@ -1,23 +1,22 @@
+const _radius = Symbol();
+const _draw = Symbol();
+const _move = Symbol();
+
 class Circle {
-  draw() {
-    console.log(this);
+  constructor(radius) {
+    // Private property with symbol
+    this[_radius] = radius;
+  }
+
+  [_move]() {
+    this[_draw]();
+    console.log("move");
+  }
+
+  // Private method with symbol
+  [_draw]() {
+    console.log("draw");
   }
 }
 
-const c = new Circle();
-const draw = c.draw;
-draw();
-
-// function Circle() {
-//   this.draw = function () {
-//     console.log(this);
-//   };
-// }
-
-// const c = new Circle();
-// // Method call
-// c.draw();
-
-// const draw = c.draw;
-// // Function call
-// draw();
+const c = new Circle(1);
