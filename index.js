@@ -38,10 +38,14 @@ function HtmlSelectElement(items = []) {
 
 HtmlSelectElement.prototype = e;
 
-function HtmlImageElement(src) {
-  let src = src;
+function HtmlImageElement(source) {
+  let src = source;
 
-  this.render = function () {};
+  this.render = function () {
+    const imageElement = document.createElement("img");
+    imageElement.src = src;
+    return imageElement;
+  };
 
   Object.defineProperty(this, "src", {
     get: function () {
@@ -62,3 +66,12 @@ HtmlImageElement.prototype.constructor = HtmlImageElement;
 // create instances
 const se = new HtmlSelectElement([1, 2, 3]);
 const img = new HtmlImageElement();
+
+const elements = [
+  new HtmlSelectElement([1, 3, 5]),
+  new HtmlImageElement("http://example.com/img.jpg"),
+];
+
+for (let element of elements) {
+  console.log(element.render());
+}
