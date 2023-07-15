@@ -1,20 +1,22 @@
-const _radius = new WeakMap();
-
-class Circle {
-  constructor(radius) {
-    _radius.set(this, radius);
+class Shape {
+  constructor(color) {
+    this.color = color;
   }
 
-  get radius() {
-    return _radius.get(this);
-  }
-
-  set radius(value) {
-    if (value <= 0 || typeof value !== "number") {
-      throw new Error("Invalid radius");
-    }
-    _radius.set(this, value);
+  draw() {
+    console.log("draw");
   }
 }
 
-const c = new Circle(1);
+class Circle extends Shape {
+  constructor(color, radius) {
+    super(color);
+    this.radius = radius;
+  }
+
+  move() {
+    console.log("move");
+  }
+}
+
+const c = new Circle("blue", 1);
